@@ -1,0 +1,18 @@
+.thumbnail {
+  border: 2px solid #000; /*used for visual guide but remove later*/
+  width: 10rem;
+  height: 15rem;
+}
+
+section {
+  padding: 2%;
+  padding-bottom: 0%;
+  width: 10rem;
+  display: inline-block;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.25em;
+  margin: 0;
+}

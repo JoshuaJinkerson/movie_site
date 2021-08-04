@@ -1,0 +1,41 @@
+.logo {
+  height: 4em;
+  width: 4em;
+  padding-top: 1%;
+  padding-left: 2%;
+}
+
+.search {
+  opacity: 0;
+  padding-left: 15%; /*shifts the search bar right or left*/
+  margin-bottom: 2em;
+}
+
+input {
+  width: 30%;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+header {
+  background-color: #337cb9;
+}
+
+.submit {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #52e042;
+  color: #000;
+  border-radius: 35%;
+}
+
+.submit:hover {
+  background-color: #4ac954;
+  color: #000;
+}
+
+input,
+.submit {
+  position: relative;
+  top: -2em;
+  padding: 0.5em;
+}

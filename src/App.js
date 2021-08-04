@@ -1,25 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+import Banner from './Components/Banner/Banner';
+import ResultList from './Components/ResultList/resultList';
+import imdb from '../src/util/imdb_search'
+import Detail from './Components/Details/Detail';
+
+
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.search = this.search.bind(this);
+    
+    this.state=
+    {
+      SearchResults:[]
+    }
+  
+  }
+  
+  search(value){    
+    imdb.search(value).then(searchResults => {
+      this.setState({SearchResults: searchResults});
+    })
+  }
+  
+  render(){
+    return (
+    <Router>
+      <Banner onSearch={this.search} />
+        <Switch>
+          <Route path="/resultlist">
+            <div>
+              <ResultList SearchResults={this.state.SearchResults}  />
+            </div>
+          </Route>
+          <Route path="/details/:id">
+            <Detail SearchResults={this.state.SearchResults} />
+          </Route>
+        </Switch>
+    </Router>
+      
+  )};
 }
 
 export default App;
