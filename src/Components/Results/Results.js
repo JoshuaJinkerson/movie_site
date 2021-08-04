@@ -5,31 +5,26 @@ import './Results.css'
 import { Link } from 'react-router-dom'
 import details from '../../util/get_details'
 
-export default class Results extends React.Component {    
-    constructor(props){
-        super(props)
-        this.getDetails = this.getDetails.bind(this)
-    }   
+const Results = (props) => {    
+    // const [searchResults, setSearchResults] = useState(props)
     
-    getDetails(){    
-        console.log(this.props.SearchResults.id)
-        const path = `${this.props.id}`
-        console.log(path)
-        const value = path.split('/')[3]
+    const getDetails = (e) => {   
+        console.log(e) 
+        const value = e.split('/')[2]
         console.log(value)
         details.search(value).then(searchResults => {
-          this.setState({SearchResults: searchResults});
-        })
-      }    
-    
-    render() {
-        return (
-                <Link to={`/details${this.props.id}`}>
+            this.setState({SearchResults: searchResults});
+          })
+      };
+        
+    return (
+            <Link to={`/details${props.id}`} onClick={() => {getDetails(props.id)}}>
                 <section>
-                        <img src={this.props.poster} alt="" className="thumbnail"></img>
-                        <h2>{this.props.heading}</h2>
+                        <img src={props.poster} alt="" className="thumbnail"></img>
+                        <h2>{props.heading}</h2>
                 </section>
-                </Link>
+            </Link>
             )
-    }
 }
+
+export default Results

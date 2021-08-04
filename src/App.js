@@ -32,6 +32,7 @@ class App extends React.Component{
     <Router>
       <Banner onSearch={this.search} />
         <Switch>
+                   
           <Route path="/resultlist">
             <div>
               <ResultList SearchResults={this.state.SearchResults}  />
@@ -40,6 +41,7 @@ class App extends React.Component{
           <Route path="/details/:id">
             <Detail SearchResults={this.state.SearchResults} />
           </Route>
+          <Route path="/"/> 
         </Switch>
     </Router>
       

@@ -29,7 +29,7 @@ export default class Banner extends React.Component {
     render() {
         return (
             <header>
-                <img src={logo} alt="Movie Logo" className="logo"/>
+                <Link to='/'><img src={logo} alt="Movie Logo" className="logo"/></Link>
                 <label className="search" id="search">Search for movie or film star</label>
                 <input 
                     type="search" 
