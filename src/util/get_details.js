@@ -5,7 +5,7 @@ let jsonResponse;
 
 const details = {
     async search(value){
-        const urltoFetch = `${endpoint}title/title/get-details?=${value}`
+        const urltoFetch = `${endpoint}title/get-details?tconst=${value}`
         const response = await fetch(urltoFetch, {
             method: "GET",
             headers: {
@@ -16,25 +16,10 @@ const details = {
         })
         if (response.ok){
             jsonResponse = await response.json()
-            console.log(jsonResponse)
-            console.log(jsonResponse.results)
-            if(jsonResponse.results !== []){
-                return jsonResponse.results.map(movie => ({
-                    id: movie.id,
-                    title: movie.title,
-                    year: movie.year,
-                    image: movie.image,
-                    runningTime: movie.runningTimeInMinutes,
-                    principals: movie.principals
-                }))        
-        
+            return jsonResponse
         }else{
-                return []
-                }
-        }
-
-        console.log(jsonResponse)
-
+            return []
+             }
     }
 }
 

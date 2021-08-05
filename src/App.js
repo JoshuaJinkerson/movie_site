@@ -39,7 +39,7 @@ class App extends React.Component{
             </div>
           </Route>
           <Route path="/details/:id">
-            <Detail SearchResults={this.state.SearchResults} />
+            <Detail/>
           </Route>
           <Route path="/"/> 
         </Switch>
