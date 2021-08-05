@@ -8,12 +8,11 @@ import ResultList from './Components/ResultList/resultList';
 import imdb from '../src/util/imdb_search'
 import Detail from './Components/Details/Detail';
 
-
 class App extends React.Component{
   constructor(props){
     super(props);
     this.search = this.search.bind(this);
-    
+
     this.state=
     {
       SearchResults:[]
@@ -26,7 +25,7 @@ class App extends React.Component{
       this.setState({SearchResults: searchResults});
     })
   }
-  
+
   render(){
     return (
     <Router>

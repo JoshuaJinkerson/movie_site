@@ -2,7 +2,16 @@ let clientId = 'b4480f4a50msh958e42fa6e7c537p12f648jsna1792952e958'
 let endpoint = 'https://data-imdb1.p.rapidapi.com/movie/'
 let jsonResponse;
 
- const imdb = {
+function flattenObject(ob) {
+    for (const i in ob) {
+        if (!ob.hasOwnProperty(i)) continue;
+        return ob[i]
+    }
+    return 
+}
+
+
+const imdb = {
     async getID (){
         const imdbID = jsonResponse.Result.map(movie => {return movie.imdb_id})                
         console.log(imdbID)
@@ -23,11 +32,10 @@ let jsonResponse;
                 if(detail.ok){
                     jsonResponse = await detail.json()
                     console.log(jsonResponse)   
-                    details.push(jsonResponse)
+                    let data = flattenObject(jsonResponse)
+                    details.push(data)
                     console.log(details)
-            }
-
-            
+            }   
         }
         return details
     },
