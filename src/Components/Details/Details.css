@@ -1,6 +1,24 @@
-.thumb {
-  width: 15em;
+.movieDetail {
+  display: grid;
+  grid-template-columns: 5% 1fr 3fr 5%;
+  grid-template-rows: 5% 1fr 1fr;
+  grid-template-areas:
+    ". . . ."
+    ". poster details ."
+    ". poster details .";
+}
+
+.thumb > a > img {
+  width: 20em;
   height: auto;
   padding: 2em;
   border-style: none;
+}
+
+.thumb {
+  grid-area: poster;
+}
+
+.detail {
+  grid-area: details;
 }
