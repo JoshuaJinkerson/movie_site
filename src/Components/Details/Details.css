@@ -15,10 +15,31 @@
   border-style: none;
 }
 
+.thumb > p {
+  margin-top: -10%;
+}
+
 .thumb {
   grid-area: poster;
+  text-align: center;
 }
 
 .detail {
   grid-area: details;
+}
+
+.actors > img {
+  width: 20%;
+  height: auto;
+  padding: 0.5em;
+}
+
+.actors {
+  text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .actors > img {
+    width: 30%;
+  }
 }

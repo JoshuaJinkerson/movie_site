@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react'
 
 import './Details.css'
 
+import { Link } from 'react-router-dom'
+
+
 const Detail = () => {    
     const [details, setDetails] = useState({
         banner: null,
@@ -90,6 +93,35 @@ const Detail = () => {
             }, {});
 
             /*Join the two responses into one object*/
+            console.log(castJsonResponse)
+
+            // let actors = {}
+            castJsonResponse = castJsonResponse.map(actor => {
+                let i = 0
+                while (i < Object.keys(actor).length) {
+                    
+                    let key = Object.keys(actor)[i]
+                    let value = actor[key]
+
+                    //CREATE OBJECT OF KEY VALUE PAIRS
+
+                    console.log(value)
+                    i++
+   
+                }
+                
+                
+                return console.log(actor)
+
+                //{
+                //     actors['actor'+'_'+i]:actor.actor,
+                //     actors['id'+'_'+i]:actor.actor_id
+                // }
+            }    
+            )
+            console.log(castJsonResponse)
+                
+
             let movieData = {
                 ...jsonResponse,
                 ...castJsonResponse
@@ -104,24 +136,25 @@ const Detail = () => {
 
     return (
             <div className="movieDetail">
+                <div className="thumb">
+                    <a href={details.trailer}><img src={details.banner} alt=""></img></a>
+                    <p>Click on the image for a trailer</p>
+                </div>                
                 <div className="detail">
                 
                     <h2 className="movieName">{details.title}</h2>
                     <p className="movieDesc">{details.description}</p>
                 
                 
-                <div className="actors">
-                    <img alt="" src={details.banner}></img>
-                    <img alt="" src={details.banner}></img>
-                    <img alt="" src={details.banner}></img>
-                    <img alt="" src={details.banner}></img>
-                </div>
+                    <div className="actors">
+                        <Link to={`/details/${details.actor_id}`}><img alt="" src={details.banner}></img></Link>
+                        <Link to={`/details/${details.actor_id}`}><img alt="" src={details.banner}></img></Link>
+                        <Link to={`/details/${details.actor_id}`}><img alt="" src={details.banner}></img></Link>
+                        <Link to={`/details/${details.actor_id}`}><img alt="" src={details.banner}></img></Link>
+                    </div>
                 </div>
                 
-                <div className="thumb">
-                    <a href={details.trailer}><img src={details.banner} alt=""></img></a>
-                    <p >Click on the image for a trailer </p>
-                </div>
+
             </div>
         )
 }
