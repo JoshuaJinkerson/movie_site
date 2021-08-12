@@ -28,7 +28,7 @@
   grid-area: details;
 }
 
-.actors > img {
+.actors > a > img {
   width: 20%;
   height: auto;
   padding: 0.5em;
@@ -39,7 +39,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .actors > img {
+  .actors > a > img {
     width: 30%;
   }
 }
