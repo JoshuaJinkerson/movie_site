@@ -28,24 +28,24 @@ class App extends React.Component{
 
   render(){
     return (
-    <Router>
-      <Banner onSearch={this.search} />
-        <Switch>
-                   
-          <Route path="/resultlist">
-            <div>
-              <ResultList SearchResults={this.state.SearchResults}  />
-            </div>
-          </Route>
-          <Route path="/movie/details/:id">
-            <Detail/>
-          </Route>
-          <Route path="/actor/details/:id">
-            <Detail/>
-          </Route>
-          <Route path="/"/> 
-        </Switch>
-    </Router>
+    
+      <Router>
+        <Banner onSearch={this.search} />
+          <div className="mainArea">
+            <Switch>     
+            <Route path="/resultlist">
+                <ResultList SearchResults={this.state.SearchResults}  />
+            </Route>
+            <Route path="/movie/details/:id">
+              <Detail/>
+            </Route>
+            <Route path="/actor/details/:id">
+              <Detail/>
+            </Route>
+            <Route path="/"/> 
+          </Switch>
+        </div>
+      </Router>
       
   )};
 }

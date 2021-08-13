@@ -141,26 +141,37 @@ const Detail = () => {
 
     return (
             <div className="movieDetail">
-                <div className="thumb">
-                    <a href={details.trailer}><img src={details.banner} alt=""></img></a>
-                    <p>Click on the image for a trailer</p>
-                </div>                
-                <div className="detail">
-                
-                    <h2 className="movieName">{details.title}</h2>
-                    <p className="movieDesc">{details.description}</p>
-                
-                
-                    <div className="actors">
-                        <Link to={`/actor/details/${details.imdb_id_0}`}><img alt="" src={details.image_url_2}></img></Link>
-                        <Link to={`/actor/details/${details.imdb_id_4}`}><img alt="" src={details.image_url_6}></img></Link>
-                        <Link to={`/actor/details/${details.imdb_id_8}`}><img alt="" src={details.image_url_10}></img></Link>
-                        <Link to={`/actor/details/${details.imdb_id_12}`}><img alt="" src={details.image_url_14}></img></Link>
+                {/* <div className="container"> */}
+                    <div className="thumb">
+                        <a href={details.trailer}><img src={details.banner} alt=""></img></a>
+                        <p>Click on the image for a trailer</p>
+                    </div>                
+                    <div className="detail">
+
+                        <h2 className="movieName">{details.title}</h2>
+                        <p className="movieDesc">{details.description}</p>
+                    
+                        <div className="actors">
+                            <Link to={`/actor/details/${details.imdb_id_0}`}>
+                                <img alt="" src={details.image_url_2}></img>
+                                <h3>{details.name_1}</h3>
+                            </Link>
+                            <Link to={`/actor/details/${details.imdb_id_4}`}>
+                                <img alt="" src={details.image_url_6}></img>
+                                <h3>{details.name_5}</h3>
+                            </Link>
+                            <Link to={`/actor/details/${details.imdb_id_8}`}>
+                                <img alt="" src={details.image_url_10}></img>
+                                <h3>{details.name_9}</h3>
+                            </Link>
+                            <Link to={`/actor/details/${details.imdb_id_12}`}>
+                                <img alt="" src={details.image_url_14}></img>
+                                <h3>{details.name_13}</h3>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-                
-
-            </div>
+            // </div>
         )
 }
 

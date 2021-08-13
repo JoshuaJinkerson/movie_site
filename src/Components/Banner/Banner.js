@@ -30,12 +30,12 @@ export default class Banner extends React.Component {
         return (
             <header>
                 <Link to='/'><img src={logo} alt="Movie Logo" className="logo"/></Link>
-                <label className="search" id="search">Search for movie or film star</label>
+                <label className="search" id="search">Search for movie</label>
                 <input 
                     type="search" 
                     for="search" 
                     name="search" 
-                    placeholder="Search for movie or film star" 
+                    placeholder="Search for movie" 
                     autocomplete="off"
                     onChange={this.handleChange}/>
                 <Link to="/resultlist"><button type="submit" className="submit" onClick={this.search}>Search</button></Link>
