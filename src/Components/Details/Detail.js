@@ -70,7 +70,7 @@ const Detail = () => {
             //Process data for the cast list response
             let castJsonResponse = await cast.json()
             castJsonResponse = Object.values(castJsonResponse)[9]
-            castJsonResponse = castJsonResponse.slice(0,4)
+            castJsonResponse = castJsonResponse.slice(0,4)            
 
             //get the nameIDs for the top for cast of movie
             let castList = []
@@ -85,9 +85,28 @@ const Detail = () => {
                 return result;
             }, {});
            
+            //Reformat OBJ list with numbers
+            function flattenData(arrData){
+                let actors = {}
+                for(let i = 0; i < arrData.length; i++){
+                    arrData.map(actor => {
+                    let j = 0
+                    while (j < Object.keys(arrData).length) {
+                        let key = Object.keys(actor)[j]
+                        let value = actor[key]                       
+                        actors[key + "_" + i] = value
+                        j++
+                        i++
+                    }
+                    return () => actors 
+                }
+            )}
+            return actors
+        }            
+
             //Get details for cast to use on movie details page
-            let actorDetails = []
             let castDetails = async () => {     
+                let actorDetails = []
                 for(const cast of castList) {
                     let actorURL = `${endpoint3}id/${cast}/`
                     let response = await fetch(actorURL, {
@@ -101,42 +120,11 @@ const Detail = () => {
                     let jsonResponse = await response.json()
                     actorDetails.push(flattenOneObject(jsonResponse))
                 }
-                    //MERGE CAST INTO OBJ AND REFORMAT DATA
-                    let actors = {}
-                    let i = 0
-                    actorDetails = actorDetails.map(actor => {
-                        let j = 0
-                        while (j < Object.keys(actor).length) {
-                            let key = Object.keys(actor)[j]
-                            let value = actor[key]
-                            console.log(key)
-                            actors[key + "_" + i] = value 
-                            i++
-                            j++
-                        }
-                        return actors
-                    })
+                return flattenData(actorDetails)              
             }
             
-            castDetails()
-
             //Reformat cast data into one Object
-            let actors = {}
-            for(let i = 0; i < castJsonResponse.length; i++){
-                castJsonResponse = castJsonResponse.map(actor => {
-                    let j = 0
-                    while (j < Object.keys(actor).length) {
-                        
-                        let key = Object.keys(actor)[j]
-                        let value = actor[key]
-
-                        actors[key + "_" + i] = value 
-                        i++
-                        j++
-                    }
-                    return actors
-                })
-            }       
+            let actors = await castDetails()
 
             /*Join the two responses into one object*/
             let movieData = {
@@ -164,10 +152,10 @@ const Detail = () => {
                 
                 
                     <div className="actors">
-                        <Link to={`/actor/details/${details.actor_id_1}`}><img alt="" src={details.banner}></img></Link>
-                        <Link to={`/actor/details/${details.actor_id_4}`}><img alt="" src={details.banner}></img></Link>
-                        <Link to={`/actor/details/${details.actor_id_7}`}><img alt="" src={details.banner}></img></Link>
-                        <Link to={`/actor/details/${details.actor_id_10}`}><img alt="" src={details.banner}></img></Link>
+                        <Link to={`/actor/details/${details.imdb_id_0}`}><img alt="" src={details.image_url_2}></img></Link>
+                        <Link to={`/actor/details/${details.imdb_id_4}`}><img alt="" src={details.image_url_6}></img></Link>
+                        <Link to={`/actor/details/${details.imdb_id_8}`}><img alt="" src={details.image_url_10}></img></Link>
+                        <Link to={`/actor/details/${details.imdb_id_12}`}><img alt="" src={details.image_url_14}></img></Link>
                     </div>
                 </div>
                 
