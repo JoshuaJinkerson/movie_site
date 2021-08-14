@@ -2,6 +2,7 @@
   border: 2px solid #000; /*used for visual guide but remove later*/
   width: 10rem;
   height: 15rem;
+  box-shadow: 2px 2px 5px #000;
 }
 
 section {
@@ -15,4 +16,12 @@ h2 {
   text-align: center;
   font-size: 1.25em;
   margin: 0;
+}
+
+a {
+  color: #000;
+}
+
+a:visited {
+  color: #000;
 }

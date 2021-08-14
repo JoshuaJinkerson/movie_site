@@ -141,16 +141,27 @@ const Detail = () => {
 
     return (
             <div className="movieDetail">
-                {/* <div className="container"> */}
-                    <div className="thumb">
-                        <a href={details.trailer}><img src={details.banner} alt=""></img></a>
-                        <p>Click on the image for a trailer</p>
-                    </div>                
-                    <div className="detail">
-
-                        <h2 className="movieName">{details.title}</h2>
-                        <p className="movieDesc">{details.description}</p>
+                
+                
+                <div className="container">
                     
+                    {/* section for poster */}
+                    <h1>DETAILS</h1>
+                    <div className="detailsBG">
+                        <div className="thumb">
+                            <a href={details.trailer}><img src={details.banner} alt=""></img></a>
+                            <p>Click on the image for a trailer</p>
+                        </div>
+
+                        {/* section for details and actors */}
+                        <div className="detail">
+                            <h2 className="movieName">{details.title}</h2>
+                            <p className="movieDesc">{details.description}</p>
+                        </div>
+                    </div>
+                        {/* section for actors */}
+                    <div className="actorsBG">
+                        <h2>ACTORS</h2>
                         <div className="actors">
                             <Link to={`/actor/details/${details.imdb_id_0}`}>
                                 <img alt="" src={details.image_url_2}></img>
@@ -171,7 +182,7 @@ const Detail = () => {
                         </div>
                     </div>
                 </div>
-            // </div>
+            </div>
         )
 }
 
