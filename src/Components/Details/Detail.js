@@ -67,6 +67,14 @@ const Detail = () => {
             let jsonResponse = await data.json()
             jsonResponse = flattenOneObject(jsonResponse)
 
+            //format date
+            console.log(jsonResponse.release)
+            let time = jsonResponse.release.split('-')
+            let movie_release = new Date(time[0], time[2]-2, time[1])
+            let options = {month: 'long', year: 'numeric', day: 'numeric'}
+            let date = movie_release.toLocaleDateString('en-US', options)
+            jsonResponse['release']=date
+
             //Process data for the cast list response
             let castJsonResponse = await cast.json()
             castJsonResponse = Object.values(castJsonResponse)[9]
@@ -133,54 +141,80 @@ const Detail = () => {
             }
             /*Set the state of the responses to use the data*/
             setDetails(movieData)
+        
+
+        
+        
         return 
     }
 
     getDetails()
-}, [])
+
+
+//     console.log(details.release)
+//    let time = details.release.split('-')
+//    let movie_release = new Date(time[0], time[2]-2, time[1])
+//    let options = {month: 'long', year: 'numeric', day: 'numeric'}
+//    let date = movie_release.toLocaleDateString('en-US', options)
+//    console.log(date)
+   
+
+}, [details.release])
 
     return (
-            <div className="movieDetail">
+            <div className="container">
                 
-                
-                <div className="container">
-                    
-                    {/* section for poster */}
-                    <h1>DETAILS</h1>
-                    <div className="detailsBG">
-                        <div className="thumb">
-                            <a href={details.trailer}><img src={details.banner} alt=""></img></a>
-                            <p>Click on the image for a trailer</p>
-                        </div>
+                {/* section for poster */}
+                <h1>{details.title}</h1>
+                <div className="detailsBG">
+                    <div className="thumb">
+                        <a href={details.trailer}><img src={details.banner} alt={details.title}></img></a>
+                        <p>Click on the image for a trailer</p>
+                    </div>
 
-                        {/* section for details and actors */}
-                        <div className="detail">
-                            <h2 className="movieName">{details.title}</h2>
-                            <p className="movieDesc">{details.description}</p>
-                        </div>
+                    {/* section for details and actors */}
+                    <div className="detail">
+                        <h2 className="movieName">SYNOPSIS</h2>
+                        <p className="movieDesc">{details.description}</p>
                     </div>
-                        {/* section for actors */}
-                    <div className="actorsBG">
-                        <h2>ACTORS</h2>
-                        <div className="actors">
-                            <Link to={`/actor/details/${details.imdb_id_0}`}>
-                                <img alt="" src={details.image_url_2}></img>
-                                <h3>{details.name_1}</h3>
-                            </Link>
-                            <Link to={`/actor/details/${details.imdb_id_4}`}>
-                                <img alt="" src={details.image_url_6}></img>
-                                <h3>{details.name_5}</h3>
-                            </Link>
-                            <Link to={`/actor/details/${details.imdb_id_8}`}>
-                                <img alt="" src={details.image_url_10}></img>
-                                <h3>{details.name_9}</h3>
-                            </Link>
-                            <Link to={`/actor/details/${details.imdb_id_12}`}>
-                                <img alt="" src={details.image_url_14}></img>
-                                <h3>{details.name_13}</h3>
-                            </Link>
-                        </div>
+                </div>
+                    {/* section for actors */}
+                <div className="actorsBG">
+                    <h2>ACTORS</h2>
+                    <div className="actors">
+                        <Link to={`/actor/details/${details.imdb_id_0}`}>
+                            <img alt={details.name_1} src={details.image_url_2}></img>
+                            <h3>{details.name_1}</h3>
+                        </Link>
+                        <Link to={`/actor/details/${details.imdb_id_4}`}>
+                            <img alt={details.name_5} src={details.image_url_6}></img>
+                            <h3>{details.name_5}</h3>
+                        </Link>
+                        <Link to={`/actor/details/${details.imdb_id_8}`}>
+                            <img alt={details.name_9} src={details.image_url_10}></img>
+                            <h3>{details.name_9}</h3>
+                        </Link>
+                        <Link to={`/actor/details/${details.imdb_id_12}`}>
+                            <img alt={details.name_13} src={details.image_url_14}></img>
+                            <h3>{details.name_13}</h3>
+                        </Link>
                     </div>
+                </div>
+
+                <div className="techBG">
+                    <h2>TECHNICAL SPECS</h2>
+                    <h3>Release Date:</h3>
+                        <p>{details.release}</p>                    
+                    <h3>Movie Runtime:</h3> 
+                        <p>{details.movie_length} minutes</p>
+                </div>
+
+                <div className="infoBG">
+                    <h2>DETAILS</h2>
+                    <h3>Content Rating:</h3>
+                        <p>{details.content_rating}</p>
+                    <h3>Rating:</h3>
+                        <p>{details.rating}</p>
                 </div>
             </div>
         )

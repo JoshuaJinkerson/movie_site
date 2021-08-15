@@ -1,17 +1,12 @@
-/* Main Wrapper */
-/* .movieDetail {
-
-} */
-
 .container {
   display: grid;
-  grid-template-columns: 5% 1fr 3fr 5%;
-  grid-template-rows: 5% 1fr 1fr 1fr 1fr 5%;
+  grid-template-columns: 5% 1fr 1fr 5%;
+  grid-template-rows: 3% 1fr 0.5fr 0.25fr 1.5fr 3%;
   grid-template-areas:
     ". title title ."
     ". details details ."
     ". actors actors ."
-    ". . . ."
+    ". tech info ."
     ". . . ."
     ". . . . ";
 }
@@ -47,7 +42,47 @@
   line-height: 1.5em;
 }
 
-/* Actors Images */
+/* Fonts */
+h3 {
+  margin: 0px;
+  font-size: 1.15em;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h1 {
+  grid-area: title;
+  text-align: center;
+  font-size: 3em;
+  margin: 0;
+}
+
+.techBG > p {
+  margin: 0.3em;
+}
+
+.infoBG > p {
+  margin: 0.3em;
+}
+
+.techBG > h3 {
+  margin-left: 0.5em;
+  font-size: 1.15em;
+  padding-right: 0.25em;
+  float: left;
+}
+
+.infoBG > h3 {
+  margin-left: 0.5em;
+  font-size: 1.15em;
+  padding-right: 0.25em;
+  float: left;
+}
+
+/*Actor Images*/
 .actors > a > img {
   width: 40%;
   height: auto;
@@ -60,24 +95,7 @@
   width: 50%;
 }
 
-/* Actor Names */
-h3 {
-  margin: 0px;
-  font-size: 1.15em;
-  align-items: center;
-}
-
-h2 {
-  padding-top: 1em;
-  font-size: 1.75em;
-}
-
-h1 {
-  grid-area: title;
-  text-align: center;
-  font-size: 3em;
-}
-
+/*Actor Links*/
 .actors > a {
   text-align: center;
   width: 100%;
@@ -95,12 +113,19 @@ h1 {
   width: -webkit-fill-available;
   justify-content: center;
   display: inline-flex;
+}
+
+/*background assignment*/
+.actorsBG,
+.detailsBG,
+.techBG,
+.infoBG {
+  margin: 1em 0;
   background-color: rgba(150, 150, 150, 0.5);
-  padding: 2em;
   border-radius: 20px;
   box-shadow: 2px 2px 5px #000;
 }
-/*background assignment*/
+
 .actorsBG {
   grid-area: actors;
 }
@@ -111,9 +136,16 @@ h1 {
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 100%;
   grid-template-areas: "poster details";
-  background-color: rgba(150, 150, 150, 0.5);
-  border-radius: 20px;
-  box-shadow: 2px 2px 5px #000;
+}
+
+.techBG {
+  grid-area: tech;
+  margin-right: 1em;
+}
+
+.infoBG {
+  grid-area: info;
+  margin-left: 1em;
 }
 
 /* Media Queries */
@@ -141,5 +173,13 @@ h1 {
 
   h2 {
     font-size: 1.45em;
+  }
+
+  .techBG > h3 {
+    font-size: 1.15em;
+  }
+
+  .infoBG > h3 {
+    font-size: 1.15em;
   }
 }
