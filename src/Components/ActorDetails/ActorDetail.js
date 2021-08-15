@@ -1,27 +1,12 @@
 import React, {useState, useEffect} from 'react'
 
-import './ActorDetails.css'
+import './Actors.css'
 
 import { Link } from 'react-router-dom'
 
 
 const ActorDetail = () => {    
     const [details, setDetails] = useState({
-        banner: null,
-        content_rating: null,
-        created_at: null,
-        description: null,
-        image_url: null,
-        imdb_id: null,
-        keywords: null,
-        movie_length: null,
-        plot: null,
-        popularity: null,
-        rating: null,
-        release: null,
-        title: null,
-        trailer: null,
-        year: null,
     });
 
     function flattenOneObject(ob) {
@@ -40,7 +25,7 @@ const ActorDetail = () => {
         let endpoint3 = 'https://data-imdb1.p.rapidapi.com/actor/'
 
         //Set variables for parts of fetch URLs
-        let ID = window.location.href.split('/')[5]
+        let ID = window.location.href.split('/')[4]
 
         //Set fetch url variables  
         let detailsURL = (ID.includes('tt') ? `${endpoint1}id/${ID}/` : `${endpoint3}id/${ID}/`) 
@@ -66,14 +51,14 @@ const ActorDetail = () => {
             //Process data for the movie details response
             let jsonResponse = await data.json()
             jsonResponse = flattenOneObject(jsonResponse)
+            console.log(jsonResponse)
 
             //format date
-            console.log(jsonResponse.release)
-            let time = jsonResponse.release.split('-')
-            let movie_release = new Date(time[0], time[2]-2, time[1])
+            let time = jsonResponse.birth_date.split('-')
+            let movie_release = new Date(time[0], time[1]-1, time[2])
             let options = {month: 'long', year: 'numeric', day: 'numeric'}
             let date = movie_release.toLocaleDateString('en-US', options)
-            jsonResponse['release']=date
+            jsonResponse['birth_date']=date
 
             //Process data for the cast list response
             let castJsonResponse = await cast.json()
@@ -165,22 +150,21 @@ const ActorDetail = () => {
             <div className="container">
                 
                 {/* section for poster */}
-                <h1>{details.title}</h1>
+                <h1>{details.name}</h1>
                 <div className="detailsBG">
                     <div className="thumb">
-                        <a href={details.trailer}><img src={details.banner} alt={details.title}></img></a>
-                        <p>Click on the image for a trailer</p>
+                        <img src={details.image_url} alt={details.name}></img>
                     </div>
 
                     {/* section for details and actors */}
                     <div className="detail">
-                        <h2 className="movieName">SYNOPSIS</h2>
-                        <p className="movieDesc">{details.description}</p>
+                        <h2 className="movieName">BIO</h2>
+                        <p className="movieDesc">{details.partial_bio}</p>
                     </div>
                 </div>
                     {/* section for actors */}
                 <div className="actorsBG">
-                    <h2>ACTORS</h2>
+                    <h2>ALSO KNOWN FOR...</h2>
                     <div className="actors">
                         <Link to={`/actor/details/${details.imdb_id_0}`}>
                             <img alt={details.name_1} src={details.image_url_2}></img>
@@ -201,20 +185,17 @@ const ActorDetail = () => {
                     </div>
                 </div>
 
-                <div className="techBG">
-                    <h2>TECHNICAL SPECS</h2>
-                    <h3>Release Date:</h3>
-                        <p>{details.release}</p>                    
-                    <h3>Movie Runtime:</h3> 
-                        <p>{details.movie_length} minutes</p>
-                </div>
-
                 <div className="infoBG">
                     <h2>DETAILS</h2>
-                    <h3>Content Rating:</h3>
-                        <p>{details.content_rating}</p>
-                    <h3>Rating:</h3>
-                        <p>{details.rating}</p>
+                    <h3>Birth date:</h3>
+                        <p>{details.birth_date}</p>
+                    <h3>Birth Place:</h3>
+                        <p>{details.birth_place}</p>
+                    <h3>Height:</h3>
+                        <p>{details.height}</p>
+                    <h3>Horoscope:</h3>
+                        <p>{details.star_sign}</p>
+
                 </div>
             </div>
         )

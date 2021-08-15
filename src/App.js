@@ -37,10 +37,10 @@ class App extends React.Component{
             <Route path="/resultlist">
                 <ResultList SearchResults={this.state.SearchResults}  />
             </Route>
-            <Route path="/movie/details/:id">
+            <Route path="/movie/:id">
               <Detail/>
             </Route>
-            <Route path="/actor/details/:id">
+            <Route path="/actor/:id">
               <ActorDetails/>
             </Route>
             <Route path="/"/> 

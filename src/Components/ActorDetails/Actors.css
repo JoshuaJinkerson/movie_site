@@ -60,19 +60,8 @@ h1 {
   margin: 0;
 }
 
-.techBG > p {
-  margin: 0.3em;
-}
-
 .infoBG > p {
   margin: 0.3em;
-}
-
-.techBG > h3 {
-  margin-left: 0.5em;
-  font-size: 1.15em;
-  padding-right: 0.25em;
-  float: left;
 }
 
 .infoBG > h3 {
@@ -118,7 +107,6 @@ h1 {
 /*background assignment*/
 .actorsBG,
 .detailsBG,
-.techBG,
 .infoBG {
   margin: 1em 0;
   background-color: rgba(150, 150, 150, 0.5);
@@ -138,14 +126,10 @@ h1 {
   grid-template-areas: "poster details";
 }
 
-.techBG {
-  grid-area: tech;
-  margin-right: 1em;
-}
-
 .infoBG {
   grid-area: info;
   margin-left: 1em;
+  padding-bottom: 1em;
 }
 
 /* Media Queries */
@@ -173,10 +157,6 @@ h1 {
 
   h2 {
     font-size: 1.45em;
-  }
-
-  .techBG > h3 {
-    font-size: 1.15em;
   }
 
   .infoBG > h3 {

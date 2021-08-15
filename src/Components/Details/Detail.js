@@ -40,7 +40,7 @@ const Detail = () => {
         let endpoint3 = 'https://data-imdb1.p.rapidapi.com/actor/'
 
         //Set variables for parts of fetch URLs
-        let ID = window.location.href.split('/')[5]
+        let ID = window.location.href.split('/')[4]
 
         //Set fetch url variables  
         let detailsURL = (ID.includes('tt') ? `${endpoint1}id/${ID}/` : `${endpoint3}id/${ID}/`) 
@@ -182,19 +182,19 @@ const Detail = () => {
                 <div className="actorsBG">
                     <h2>ACTORS</h2>
                     <div className="actors">
-                        <Link to={`/actor/details/${details.imdb_id_0}`}>
+                        <Link to={`/actor/${details.imdb_id_0}`}>
                             <img alt={details.name_1} src={details.image_url_2}></img>
                             <h3>{details.name_1}</h3>
                         </Link>
-                        <Link to={`/actor/details/${details.imdb_id_4}`}>
+                        <Link to={`/actor/${details.imdb_id_4}`}>
                             <img alt={details.name_5} src={details.image_url_6}></img>
                             <h3>{details.name_5}</h3>
                         </Link>
-                        <Link to={`/actor/details/${details.imdb_id_8}`}>
+                        <Link to={`/actor/${details.imdb_id_8}`}>
                             <img alt={details.name_9} src={details.image_url_10}></img>
                             <h3>{details.name_9}</h3>
                         </Link>
-                        <Link to={`/actor/details/${details.imdb_id_12}`}>
+                        <Link to={`/actor/${details.imdb_id_12}`}>
                             <img alt={details.name_13} src={details.image_url_14}></img>
                             <h3>{details.name_13}</h3>
                         </Link>

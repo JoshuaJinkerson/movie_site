@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Results = (props) => {    
     return (
-            <Link to={`/movie/details/${props.id}`} >
+            <Link to={`/movie/${props.id}`} >
                 <section>
                         <img src={props.poster} alt="" className="thumbnail"></img>
                         <h2>{props.heading}</h2>
