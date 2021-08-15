@@ -68,7 +68,6 @@ const Detail = () => {
             jsonResponse = flattenOneObject(jsonResponse)
 
             //format date
-            console.log(jsonResponse.release)
             let time = jsonResponse.release.split('-')
             let movie_release = new Date(time[0], time[2]-2, time[1])
             let options = {month: 'long', year: 'numeric', day: 'numeric'}
@@ -149,15 +148,6 @@ const Detail = () => {
     }
 
     getDetails()
-
-
-//     console.log(details.release)
-//    let time = details.release.split('-')
-//    let movie_release = new Date(time[0], time[2]-2, time[1])
-//    let options = {month: 'long', year: 'numeric', day: 'numeric'}
-//    let date = movie_release.toLocaleDateString('en-US', options)
-//    console.log(date)
-   
 
 }, [details.release])
 

@@ -48,7 +48,6 @@ const imdb = {
                 "x-rapidapi-key": `${clientId}`,
                 "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
                 'Content-Type': 'application/json',
-                'Content-Length': 20
             } 
         })
         if (response.ok){

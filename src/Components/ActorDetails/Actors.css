@@ -6,8 +6,8 @@
     ". title title ."
     ". details details ."
     ". actors actors ."
-    ". tech info ."
-    ". . . ."
+    ". info info ."
+    ". tech tech ."
     ". . . . ";
 }
 
@@ -23,6 +23,13 @@
 
 .thumb > a > img:hover {
   width: 18em;
+  box-shadow: 2px 2px 5px #000;
+}
+
+.thumb > img {
+  width: 15em;
+  height: auto;
+  margin: 2em;
   box-shadow: 2px 2px 5px #000;
 }
 
@@ -51,6 +58,7 @@ h3 {
 
 h2 {
   font-size: 1.75em;
+  color: #08487c;
 }
 
 h1 {
