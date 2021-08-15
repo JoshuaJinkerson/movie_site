@@ -7,6 +7,7 @@ import Banner from './Components/Banner/Banner';
 import ResultList from './Components/ResultList/resultList';
 import imdb from '../src/util/imdb_search'
 import Detail from './Components/Details/Detail';
+import ActorDetails from './Components/ActorDetails/ActorDetail';
 
 class App extends React.Component{
   constructor(props){
@@ -40,7 +41,7 @@ class App extends React.Component{
               <Detail/>
             </Route>
             <Route path="/actor/details/:id">
-              <Detail/>
+              <ActorDetails/>
             </Route>
             <Route path="/"/> 
           </Switch>

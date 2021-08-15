@@ -1,0 +1,185 @@
+.container {
+  display: grid;
+  grid-template-columns: 5% 1fr 1fr 5%;
+  grid-template-rows: 3% 1fr 0.5fr 0.25fr 1.5fr 3%;
+  grid-template-areas:
+    ". title title ."
+    ". details details ."
+    ". actors actors ."
+    ". tech info ."
+    ". . . ."
+    ". . . . ";
+}
+
+/* Poster Image */
+.thumb > a > img {
+  width: 15em;
+  height: auto;
+  margin: 2em;
+  border-style: none;
+  box-shadow: 2px 2px 5px #000;
+  transition: width 0.5s ease-in;
+}
+
+.thumb > a > img:hover {
+  width: 18em;
+  box-shadow: 2px 2px 5px #000;
+}
+
+/* Poster Section*/
+.thumb > p {
+  margin-top: -10%;
+}
+
+.thumb {
+  text-align: center;
+}
+
+/* Detail Section */
+.detail {
+  border-radius: 3%;
+  padding: 2em;
+  line-height: 1.5em;
+}
+
+/* Fonts */
+h3 {
+  margin: 0px;
+  font-size: 1.15em;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h1 {
+  grid-area: title;
+  text-align: center;
+  font-size: 3em;
+  margin: 0;
+}
+
+.techBG > p {
+  margin: 0.3em;
+}
+
+.infoBG > p {
+  margin: 0.3em;
+}
+
+.techBG > h3 {
+  margin-left: 0.5em;
+  font-size: 1.15em;
+  padding-right: 0.25em;
+  float: left;
+}
+
+.infoBG > h3 {
+  margin-left: 0.5em;
+  font-size: 1.15em;
+  padding-right: 0.25em;
+  float: left;
+}
+
+/*Actor Images*/
+.actors > a > img {
+  width: 40%;
+  height: auto;
+  margin: 0.25em;
+  transition: width 0.5s ease-in;
+}
+
+.actors > a > img:hover {
+  box-shadow: 2px 2px 5px #000;
+  width: 50%;
+}
+
+/*Actor Links*/
+.actors > a {
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+}
+
+.actors > a:visited {
+  text-decoration: none;
+  color: #000;
+}
+
+.actors {
+  align-items: baseline;
+  width: -webkit-fill-available;
+  justify-content: center;
+  display: inline-flex;
+}
+
+/*background assignment*/
+.actorsBG,
+.detailsBG,
+.techBG,
+.infoBG {
+  margin: 1em 0;
+  background-color: rgba(150, 150, 150, 0.5);
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px #000;
+}
+
+.actorsBG {
+  grid-area: actors;
+}
+
+.detailsBG {
+  grid-area: details;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 100%;
+  grid-template-areas: "poster details";
+}
+
+.techBG {
+  grid-area: tech;
+  margin-right: 1em;
+}
+
+.infoBG {
+  grid-area: info;
+  margin-left: 1em;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 800px) {
+  .actors > a > img {
+    width: 45%;
+  }
+
+  .actors > a > img:hover {
+    box-shadow: 2px 2px 5px #000;
+    width: 55%;
+  }
+
+  .thumb > a > img {
+    width: 15em;
+  }
+
+  .thumb > a > img:hover {
+    width: 17em;
+  }
+
+  h3 {
+    font-size: 0.85em;
+  }
+
+  h2 {
+    font-size: 1.45em;
+  }
+
+  .techBG > h3 {
+    font-size: 1.15em;
+  }
+
+  .infoBG > h3 {
+    font-size: 1.15em;
+  }
+}
