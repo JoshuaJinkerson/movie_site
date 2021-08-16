@@ -2,14 +2,15 @@ import React from 'react'
 import logo from '../../Images/logo512.png'
 
 import './Banner.css'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
-export default class Banner extends React.Component {
+class Banner extends React.Component {
     constructor(props){
         super(props)
         
         this.handleChange = this.handleChange.bind(this)
         this.search = this.search.bind(this)
+        this.keySearch = this.keySearch.bind(this)
 
         this.state={
             value:""
@@ -18,13 +19,22 @@ export default class Banner extends React.Component {
 
     search(){
         this.props.onSearch(this.state.value)
+        const {history} = this.props;
+        history.push('/resultlist')
     }
 
     handleChange(e){
         this.setState({
             value:e.target.value
         })
-    }        
+    }
+    
+    keySearch(e){
+        if(e.keyCode === 13){
+            this.search()
+        }
+    }
+    
 
     render() {
         return (
@@ -37,9 +47,12 @@ export default class Banner extends React.Component {
                     name="search" 
                     placeholder="Search for movie" 
                     autocomplete="off"
-                    onChange={this.handleChange}/>
-                <Link to="/resultlist"><button type="submit" className="submit" onClick={this.search}>Search</button></Link>
+                    onChange={this.handleChange}
+                    onKeyDown={this.keySearch}/>
+                <Link to="/resultlist"><button id="submit" type="submit" className="submit" onClick={this.search}>Search</button></Link>
             </header>
         )
     }
 }
+
+export default withRouter(Banner)
