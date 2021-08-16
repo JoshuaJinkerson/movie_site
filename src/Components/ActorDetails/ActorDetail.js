@@ -161,15 +161,15 @@ const ActorDetail = () => {
                             <img alt={details.title_1} src={details.image_url_10}></img>
                             <h3>{details.title_1}</h3>
                         </Link>
-                        <Link to={`/movie/${details.imdb_id_4}`}>
+                        <Link to={`/movie/${details.imdb_id_12}`}>
                             <img alt={details.title_13} src={details.image_url_22}></img>
                             <h3>{details.title_13}</h3>
                         </Link>
-                        <Link to={`/movie/${details.imdb_id_8}`}>
+                        <Link to={`/movie/${details.imdb_id_24}`}>
                             <img alt={details.title_25} src={details.image_url_34}></img>
                             <h3>{details.title_25}</h3>
                         </Link>
-                        <Link to={`/movie/${details.imdb_id_12}`}>
+                        <Link to={`/movie/${details.imdb_id_36}`}>
                             <img alt={details.title_37} src={details.image_url_46}></img>
                             <h3>{details.title_37}</h3>
                         </Link>

@@ -66,10 +66,11 @@ const Detail = () => {
             //Process data for the movie details response
             let jsonResponse = await data.json()
             jsonResponse = flattenOneObject(jsonResponse)
-
+            console.log(jsonResponse)
+            
             //format date
             let time = jsonResponse.release.split('-')
-            let movie_release = new Date(time[0], time[2]-2, time[1])
+            let movie_release = new Date(time[0], time[1]-1, time[2])
             let options = {month: 'long', year: 'numeric', day: 'numeric'}
             let date = movie_release.toLocaleDateString('en-US', options)
             jsonResponse['release']=date
@@ -204,7 +205,7 @@ const Detail = () => {
                     <h3>Content Rating:</h3>
                         <p>{details.content_rating}</p>
                     <h3>Rating:</h3>
-                        <p>{details.rating}</p>
+                        <p>{details.rating}/10</p>
                 </div>
             </div>
         )
